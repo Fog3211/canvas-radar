@@ -220,6 +220,8 @@ export const renderRadar = (
   const maxScore = maxBoundaryValue || Math.max.apply(Math, pointScore);
 
   const layer1 = new Polygon(
+    canvas,
+    ctx,
     {
       pointX: canvas.width / 2,
       pointY: canvas.height / 2,
@@ -227,22 +229,20 @@ export const renderRadar = (
       r: canvas.width / 3.5,
       maxScore,
       pointScore,
-      canvas: canvas,
     },
-    ctx,
   );
 
   const layer2 = new Polygon(
+    canvas,
+    ctx,
     {
       pointX: canvas.width / 2,
       pointY: canvas.height / 2,
       numofSide: numofSide,
       r: ((canvas.width / 3.5) * 3) / 5,
       maxScore,
-      pointScore,
-      canvas: canvas,
+      pointScore
     },
-    ctx,
   );
 
   polygonArr.push(layer1, layer2);
