@@ -55,6 +55,8 @@ class Polygon {
     this.ctx.fill();
     this.ctx.closePath();
     this.ctx.stroke();
+   
+    this.ctx.restore();
   }
 
   //绘制辐射线

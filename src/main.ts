@@ -4,7 +4,7 @@ const generateData = (length: number) => {
   return Array.from({ length }).map((_, index) => ({
     name: `Name-${index + 1}`,
     value: ~~(Math.random() * 100),
-    color: `#${(~~(Math.random() * 256 * 256 * 256 - 1)).toString(16)}`
+    color: `#${(Math.random() * 0xFFFFFF << 0).toString(16).padStart(6, '0')}`
   }))
 }
 
