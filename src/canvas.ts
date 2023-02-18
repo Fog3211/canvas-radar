@@ -2,9 +2,6 @@
  * TODO:
  * 修正tips偏移位置
  */
-const ColorPalette = {
-  line: '#c7cbd5',
-};
 
 export type IPolygonOption = {
   pointX: number
@@ -34,7 +31,7 @@ class Polygon {
     this.pointX = option.pointX;
     this.numofSide = option.numofSide || 3;
     this.r = option.r;
-    this.strokeStyle = ColorPalette.line;
+    this.strokeStyle = '#c7cbd5';
     this.ctx = ctx;
     this.canvas = canvas;
     this.maxScore = option.maxScore;
@@ -70,7 +67,7 @@ class Polygon {
     this.ctx.beginPath();
     for (let i = 1; i <= this.numofSide; i++) {
       this.ctx.lineWidth = this.canvas!.height * 0.002;
-      this.ctx.strokeStyle = ColorPalette.line;
+      this.ctx.strokeStyle = this.strokeStyle;
       this.ctx.moveTo(this.pointX, this.pointY);
       const X = this.pointX + this.r * Math.sin(Math.PI - (2 * Math.PI * i) / this.numofSide);
       const Y = this.pointY + this.r * Math.cos(Math.PI + (2 * Math.PI * i) / this.numofSide);
@@ -139,7 +136,7 @@ class Polygon {
     text: string,
     x: number,
     y: number,
-    { color = '#000', bgColor = '#fff' }: { color?: string; bgColor?: string },
+    { color, bgColor }: { color: string; bgColor: string },
   ) {
     const fontSize = this.r / 8;
     this.ctx.beginPath();
@@ -175,8 +172,7 @@ export type RadarOptions = {
   data: {
     name: string;
     value: number;
-    color?: string;
-    bgColor?: string;
+    color: string;
   }[];
   maxBoundaryValue: number;
   width: number;
@@ -265,8 +261,8 @@ export const renderRadar = (
             Radius * Math.cos(Math.PI + (2 * Math.PI * tipIndex) / pointScore.length);
 
           polygonArr[0].drawTip(dataItem.name, x, y, {
-            color: dataItem.color,
-            bgColor: dataItem.bgColor,
+            color: '#fff',
+            bgColor: dataItem.color,
           });
 
           polygonArr[0].drawPoint();

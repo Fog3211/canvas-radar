@@ -6,11 +6,47 @@
   <link rel="icon" type="image/svg+xml" href="/vite.svg" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Canvas Radar</title>
+
+  <style>
+    button {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      background-color: #EA4C89;
+      border-radius: 8px;
+      border-style: none;
+      box-sizing: border-box;
+      color: #FFFFFF;
+      cursor: pointer;
+      display: inline-block;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 20px;
+      list-style: none;
+      outline: none;
+      padding: 10px 16px;
+      text-align: center;
+      text-decoration: none;
+      transition: color 100ms;
+      vertical-align: baseline;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    button:hover,
+    button:focus {
+      background-color: #F082AC;
+    }
+  </style>
 </head>
 
 <body>
   <div id="app">
     <canvas id="canvas-radar"></canvas>
+    <button id="btn">
+      generate new radar
+    </button>
   </div>
   <script type="module" src="/src/main.ts"></script>
 </body>

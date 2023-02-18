@@ -1,31 +1,40 @@
-import { renderRadar } from './util'
+import { renderRadar } from './canvas'
 
 const canvas = document.querySelector<HTMLCanvasElement>('#canvas-radar')!
 const ctx = canvas.getContext('2d')!;
 
-const data = [
-  { name: '羁绊', value: 99, color: '#fff', bgColor: '#E0684E' },
-  { name: '玩乐', value: 63, color: '#fff', bgColor: '#2F6EEB' },
-  { name: '默契', value: 55, color: '#fff', bgColor: '#FFB400' },
-  { name: '承诺', value: 50, color: '#fff', bgColor: '#00A4B8' },
-  { name: '亲密', value: 64, color: '#fff', bgColor: '#00985F' },
-  { name: '激情', value: 45, color: '#fff', bgColor: '#FF782D' },
-];
+const generateData = (length: number) => {
+  return Array.from({ length }).map((_, index) => ({
+    name: `Name-${index + 1}`,
+    value: ~~(Math.random() * 100),
+    color: `#${(~~(Math.random() * 256 * 256 * 256 - 1)).toString(16)}`
+  }))
+}
 
 const scaleNum = (n: number) => n * Math.min(600, document.documentElement.clientWidth || document.body.clientWidth) / 375;
 
-export const render = () => {
+let preData = generateData(6)
+
+export const render = (isNewChart: boolean) => {
   const width = scaleNum(375)
   const height = scaleNum(375)
 
+  const newData = isNewChart ? generateData(~~(Math.random() * 15 + 3)) : preData
+
+  preData = newData
+
   renderRadar(canvas, ctx, {
-    data,
+    data: newData,
     maxBoundaryValue: 100,
     width,
     height
   })
+
+  console.log('current radar data is ', newData)
 }
 
-render()
+render(false)
 
-window.addEventListener('resize', render)
+window.addEventListener('resize', render.bind(this, false))
+
+document.querySelector('#btn')?.addEventListener('click', render.bind(this, true))
