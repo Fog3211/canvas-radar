@@ -196,7 +196,7 @@ export const renderRadar = (
     pointScore.push(item.value);
   });
 
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvasW, canvasH)
 
   /*设置画布宽高*/
   canvas.width = canvasW;

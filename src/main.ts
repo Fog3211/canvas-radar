@@ -1,4 +1,3 @@
-import './style.css'
 import { renderRadar } from './util'
 
 const canvas = document.querySelector<HTMLCanvasElement>('#canvas-radar')!
@@ -13,9 +12,20 @@ const data = [
   { name: '激情', value: 45, color: '#fff', bgColor: '#FF782D' },
 ];
 
-renderRadar(canvas, ctx, {
-  data,
-  maxBoundaryValue: 100,
-  width: 375,
-  height: 300
-})
+const scaleNum = (n: number) => n * Math.min(600, document.documentElement.clientWidth || document.body.clientWidth) / 375;
+
+export const render = () => {
+  const width = scaleNum(375)
+  const height = scaleNum(375)
+
+  renderRadar(canvas, ctx, {
+    data,
+    maxBoundaryValue: 100,
+    width,
+    height
+  })
+}
+
+render()
+
+window.addEventListener('resize', render)
