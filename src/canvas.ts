@@ -1,8 +1,3 @@
-/**
- * TODO:
- * 修正tips偏移位置
- */
-
 export type IPolygonOption = {
   pointX: number
   pointY: number
