@@ -254,11 +254,11 @@ export const renderRadar = (
         data.forEach((dataItem, tipIndex) => {
           const x =
             canvas.width / 2 -
-            Radius * Math.sin(Math.PI + (2 * Math.PI * tipIndex) / pointScore.length);
+            (Radius * 0.85) * Math.sin(Math.PI + (2 * Math.PI * tipIndex) / pointScore.length);
 
           const y =
             canvas.height / 2 +
-            Radius * Math.cos(Math.PI + (2 * Math.PI * tipIndex) / pointScore.length);
+            (Radius * 0.85) * Math.cos(Math.PI + (2 * Math.PI * tipIndex) / pointScore.length);
 
           polygonArr[0].drawTip(dataItem.name, x, y, {
             color: '#fff',

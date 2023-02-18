@@ -1,8 +1,5 @@
 import { renderRadar } from './canvas'
 
-const canvas = document.querySelector<HTMLCanvasElement>('#canvas-radar')!
-const ctx = canvas.getContext('2d')!;
-
 const generateData = (length: number) => {
   return Array.from({ length }).map((_, index) => ({
     name: `Name-${index + 1}`,
@@ -14,6 +11,9 @@ const generateData = (length: number) => {
 const scaleNum = (n: number) => n * Math.min(600, document.documentElement.clientWidth || document.body.clientWidth) / 375;
 
 let preData = generateData(6)
+
+const canvas = document.querySelector<HTMLCanvasElement>('#canvas-radar')!
+const ctx = canvas.getContext('2d')!;
 
 export const render = (isNewChart: boolean) => {
   const width = scaleNum(375)
