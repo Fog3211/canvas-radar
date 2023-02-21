@@ -55,7 +55,7 @@ class Polygon {
     this.ctx.fill();
     this.ctx.closePath();
     this.ctx.stroke();
-   
+
     this.ctx.restore();
   }
 
@@ -153,7 +153,6 @@ class Polygon {
       blockHeight,
       radius,
     );
-    this.ctx.stroke();
     this.ctx.fill();
 
     this.ctx.fillStyle = color;
