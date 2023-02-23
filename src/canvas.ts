@@ -1,3 +1,5 @@
+import './polyfill'
+
 export type IPolygonOption = {
   pointX: number
   pointY: number
