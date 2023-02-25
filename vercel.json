@@ -1,3 +1,0 @@
-{
-  "rewrites": [{ "source": "/canvas-radar", "destination": "/index.html" }]
-}
